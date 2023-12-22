@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bisic Clock</title>
+    <style>
+        body{
+            background-color: #121212;
+        }
+        #clock{
+            font-family:'orbitron', sans-serif;
+            color: #ffffff;
+            text-align: center;
+            font-size: 56px;
+            padding-top: 20%;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <script>
+        function updateTime(){
+            var date = new Date();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            var peroid = hour >= 12 ? "PM" : "AM";
+            hour = hour %12;
+            hour = hour ? hour : 12;
+            hour = updateTimeDigit(hour);
+            min = updateTimeDigit(min);
+            sec = updateTimeDigit(sec);
+            document.getElementById("clock").innerHTML = hour + ":" + min + ":" + sec + " " + peroid;
+         }
+         function updateTimeDigit(l) {
+            return (l < 10 ? "0" : "") + l
+         }
+         setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
